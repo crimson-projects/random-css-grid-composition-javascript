@@ -1,0 +1,140 @@
+html {
+  box-sizing: border-box;
+  /* anti-aliasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+:root {
+  --white: white;
+  --red: #df2b1d;
+  --yellow: #f5ca41;
+  --blue: #1521a7;
+  --dark: hsl(240deg 15% 5%);
+  --dark-2: hsl(240deg 10% 15%);
+  --background-color: whitesmoke;
+
+  /* shadows generated with https://www.joshwcomeau.com/shadow-palette/ */
+  --shadow-color: 0deg 0% 0%;
+  --shadow-elevation-low: 0.2px 0.8px 0.8px hsl(var(--shadow-color) / 0.07),
+    0.2px 1.1px 1.1px -1.7px hsl(var(--shadow-color) / 0.06),
+    0.5px 2.5px 2.5px -3.5px hsl(var(--shadow-color) / 0.04);
+  --shadow-elevation-medium: 0.2px 0.8px 0.8px hsl(var(--shadow-color) / 0.06),
+    0.3px 1.5px 1.5px -0.9px hsl(var(--shadow-color) / 0.05),
+    0.6px 2.9px 2.9px -1.7px hsl(var(--shadow-color) / 0.05),
+    1.2px 6.2px 6.2px -2.6px hsl(var(--shadow-color) / 0.04),
+    2.4px 12.4px 12.3px -3.5px hsl(var(--shadow-color) / 0.03);
+  --shadow-elevation-high: 0.2px 0.8px 0.8px hsl(var(--shadow-color) / 0.05),
+    0.3px 1.8px 1.8px -0.4px hsl(var(--shadow-color) / 0.05),
+    0.6px 2.8px 2.8px -0.8px hsl(var(--shadow-color) / 0.05),
+    0.8px 4.3px 4.3px -1.2px hsl(var(--shadow-color) / 0.05),
+    1.3px 6.6px 6.6px -1.6px hsl(var(--shadow-color) / 0.04),
+    1.9px 10px 9.9px -1.9px hsl(var(--shadow-color) / 0.04),
+    2.9px 14.8px 14.7px -2.3px hsl(var(--shadow-color) / 0.04),
+    4.2px 21.4px 21.3px -2.7px hsl(var(--shadow-color) / 0.03),
+    5.9px 30.1px 29.9px -3.1px hsl(var(--shadow-color) / 0.03),
+    8px 41.3px 41px -3.5px hsl(var(--shadow-color) / 0.03);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: var(--background-color);
+  padding: 1rem;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-2);
+  }
+}
+
+figure {
+  margin: 0;
+  width: 75vmin;
+}
+
+.title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  color: lightslategray;
+  font-style: italic;
+  gap: 1rem;
+}
+
+.canvas {
+  --canvas-columns: 1fr 4fr 3fr 2fr;
+  --canvas-rows: 5fr 2fr 2fr 1fr;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--dark);
+  display: grid;
+  gap: 2.25%;
+  grid-template-columns: var(--canvas-columns);
+  grid-template-rows: var(--canvas-rows);
+  box-shadow: var(--shadow-elevation-high);
+  grid-template-areas:
+    "a a b b"
+    "c c d d"
+    "e . g h"
+    "e f i h";
+  margin-bottom: 2rem;
+}
+
+.cell {
+  background-color: var(--white);
+}
+
+.cell--a {
+  /* --cell-column-span: span 2; */
+  background-color: var(--red);
+  grid-area: a;
+}
+
+.cell--b {
+  /* --cell-column-span: span 2; */
+  grid-area: b;
+}
+
+.cell--c {
+  /* --cell-column-span: span 2; */
+  grid-area: c;
+}
+
+.cell--d {
+  /* --cell-column-span: span 2; */
+  grid-area: d;
+}
+
+.cell--e {
+  background-color: var(--yellow);
+  /* --cell-row-span: span 2; */
+  grid-area: e;
+}
+
+.cell--f {
+  /* --cell-row-span: span 2; */
+  grid-area: f;
+}
+
+.cell--g {
+  background-color: var(--blue);
+  grid-area: g;
+}
+
+.cell--h {
+  /* --cell-row-span: span 2; */
+  grid-area: h;
+}
+
+.cell--i {
+  grid-area: i;
+}
